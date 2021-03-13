@@ -86,6 +86,13 @@ export default {
             name: 'Drum roll',
             file: require('@/assets/drum_roll.mp3'),
             icon: "drum_roll.png"
+          },
+          {
+            id: 7,
+            hotkey: 'x',
+            name: 'Camera',
+            file: require('@/assets/camera_shot.mp3'),
+            icon: "camera.png"
           }
         ]
       ],
