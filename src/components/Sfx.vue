@@ -4,7 +4,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     </head>
     <div v-for="group in effect_groups" :key="group.no">
-      <button v-for="e in group" :key="e.id" @click="play_effect(e)" class="effect">
+      <button v-for="e in group" :key="e.hotkey" @click="play_effect(e)" :id="e.hotkey" class="effect">
         {{ e.name }}
         <br/>
         <img :src="get_img(e.icon)" class="effect_icon">
@@ -52,22 +52,19 @@ export default {
       effect_groups: [
         [
           {
-            id: 1,
-            hotkey: 'q',
+            hotkey: '1',
             name: 'Applause',
             file: require('@/assets/applause.mp3'),
             icon: "applause.png"
           },
           {
-            id: 2,
-            hotkey: 'w',
+            hotkey: '2',
             name: 'Cheers',
             file: require('@/assets/cheers.mp3'),
             icon: "cheers.png"
           },
           {
-            id: 3,
-            hotkey: 'e',
+            hotkey: '3',
             name: 'Bell',
             file: require('@/assets/bell.mp3'),
             icon: "bell.png"
@@ -75,15 +72,13 @@ export default {
         ],
         [
           {
-            id: 4,
-            hotkey: 'a',
+            hotkey: 'q',
             name: 'Awww',
             file: require('@/assets/awww.mp3'),
             icon: "awww.png"
           },
           {
-            id: 5,
-            hotkey: 's',
+            hotkey: 'w',
             name: 'Buzzer',
             file: require('@/assets/buzzer.mp3'),
             icon: "buzzer.png"
@@ -91,23 +86,53 @@ export default {
         ],
         [
           {
-            id: 6,
-            hotkey: 'z',
+            hotkey: 'a',
             name: 'Drum roll',
             file: require('@/assets/drum_roll.mp3'),
             icon: "drum_roll.png"
           },
           {
-            id: 7,
-            hotkey: 'x',
+            hotkey: 's',
             name: 'Camera',
             file: require('@/assets/camera_shot.mp3'),
             icon: "camera.png"
           }
+        ],
+        [
+          {
+            hotkey: 'z',
+            name: 'Laugh 1',
+            file: require('@/assets/laugh_1.mp3'),
+            icon: "laugh_1.png"
+          },
+          {
+            hotkey: 'x',
+            name: 'Laugh 2',
+            file: require('@/assets/laugh_2.mp3'),
+            icon: "laugh_2.png"
+          },
+          {
+            hotkey: 'c',
+            name: 'Laugh 3',
+            file: require('@/assets/laugh_3.mp3'),
+            icon: "laugh_3.png"
+          },
+          {
+            hotkey: 'v',
+            name: 'Tiny Laugh 1',
+            file: require('@/assets/tiny_laugh_1.mp3'),
+            icon: "tiny_laugh_1.png"
+          },
+          {
+            hotkey: 'b',
+            name: 'Tiny Laugh 2',
+            file: require('@/assets/tiny_laugh_2.mp3'),
+            icon: "tiny_laugh_2.png"
+          }
         ]
       ],
       playing: [],
-      volume: 50
+      volume: 40
     }
 
   },
@@ -183,7 +208,7 @@ export default {
       for (let i=0 ; i<all_effects.length ; i++) {
         let effect = all_effects[i]
         if (effect.hotkey === char) {
-          this.play_effect(effect)
+          document.getElementById(effect.hotkey).click();
           return
         }
       }
