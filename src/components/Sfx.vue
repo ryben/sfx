@@ -1,5 +1,8 @@
 <template>
   <div>
+    <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    </head>
     <div v-for="group in effect_groups" :key="group.no">
       <button v-for="e in group" :key="e.id" @click="play_effect(e)" class="effect">
         {{ e.name }}
@@ -11,6 +14,13 @@
     </div>
 
     <br/>
+    <br/>
+    <br/>
+    <div class="slidecontainer" style="height: 100;">
+      <i class="material-icons">volume_up</i>
+      <input type="range" min="1" max="100" v-model="volume" class="slider" id="myRange" style="height: 23px; width: 150px;">
+    </div>
+
     <br/>
     <br/>
     <button @click="stop_all" ref="stop_all_button" class="stop_all_button">
@@ -96,7 +106,8 @@ export default {
           }
         ]
       ],
-      playing: []
+      playing: [],
+      volume: 50
     }
 
   },
@@ -104,6 +115,15 @@ export default {
     window.addEventListener("keypress", function(e) {
       this.on_key_press(String.fromCharCode(e.keyCode))
     }.bind(this));
+  },
+  watch: {
+    volume: function() {
+      this.playing.forEach(p => {
+        if (p.status != EFFECT_STATUS.STOPPING) {
+          p.volume = this.get_volume()
+        }
+      })
+    }
   },
   methods: {
     get_img(filename) {
@@ -114,12 +134,15 @@ export default {
       }
       
     },
+    get_volume() {
+      return this.volume/100
+    },
     play_effect(effect) {
       this.$refs.stop_all_button.focus()
       var audio = new Audio(effect.file)
+      audio.volume = this.get_volume()
       this.playing.push(audio)
       audio.play()
-
     },
     async stop_all() {
       let all_playing = this.playing
@@ -180,30 +203,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.effect {
-  height: 100px;
-  width: 100px;
-}
-.stop_all_button {
-  height: 100px;
-  width: 200px;
-}
-.effect_icon {
-  height: 50px;
-  width: 50px;
-}
+  h3 {
+    margin: 40px 0 0;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  a {
+    color: #42b983;
+  }
+  .effect {
+    height: 100px;
+    width: 100px;
+  }
+  .stop_all_button {
+    height: 100px;
+    width: 200px;
+  }
+  .effect_icon {
+    height: 50px;
+    width: 50px;
+  }
 </style>
