@@ -72,13 +72,13 @@ export default {
         ],
         [
           {
-            hotkey: 'q',
+            hotkey: 'Q',
             name: 'Awww',
             file: require('@/assets/awww.mp3'),
             icon: "awww.png"
           },
           {
-            hotkey: 'w',
+            hotkey: 'W',
             name: 'Buzzer',
             file: require('@/assets/buzzer.mp3'),
             icon: "buzzer.png"
@@ -101,33 +101,35 @@ export default {
         [
           {
             hotkey: 'z',
-            name: 'Laugh 1',
-            file: require('@/assets/laugh_1.mp3'),
-            icon: "laugh_1.png"
+            name: 'Laugh',
+            file: require('@/assets/laugh.mp3'),
+            icon: "laugh.png"
           },
           {
             hotkey: 'x',
-            name: 'Laugh 2',
-            file: require('@/assets/laugh_2.mp3'),
-            icon: "laugh_2.png"
+            name: 'Tiny Laugh',
+            file: require('@/assets/tiny_laugh.mp3'),
+            icon: "tiny_laugh.png"
           },
           {
             hotkey: 'c',
-            name: 'Laugh 3',
-            file: require('@/assets/laugh_3.mp3'),
-            icon: "laugh_3.png"
+            name: 'Wow!',
+            file: require('@/assets/wow.mp3')
           },
           {
             hotkey: 'v',
-            name: 'Tiny Laugh 1',
-            file: require('@/assets/tiny_laugh_1.mp3'),
-            icon: "tiny_laugh_1.png"
+            name: 'Yey!',
+            file: require('@/assets/yey.mp3')
           },
           {
             hotkey: 'b',
-            name: 'Tiny Laugh 2',
-            file: require('@/assets/tiny_laugh_2.mp3'),
-            icon: "tiny_laugh_2.png"
+            name: 'Awesome!',
+            file: require('@/assets/awesome.mp3')
+          },
+          {
+            hotkey: 'n',
+            name: 'That\'s Right!',
+            file: require('@/assets/thats_right.mp3')
           }
         ]
       ],
@@ -207,7 +209,7 @@ export default {
       // Check if a shortcut matches
       for (let i=0 ; i<all_effects.length ; i++) {
         let effect = all_effects[i]
-        if (effect.hotkey === char) {
+        if (effect.hotkey.toLowerCase() === char.toLowerCase()) {
           document.getElementById(effect.hotkey).click();
           return
         }
@@ -253,5 +255,8 @@ export default {
   .effect_icon {
     height: 50px;
     width: 50px;
+  }
+  img {
+    pointer-events: none;
   }
 </style>
