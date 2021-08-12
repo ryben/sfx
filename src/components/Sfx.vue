@@ -54,82 +54,243 @@ export default {
           {
             hotkey: '1',
             name: 'Applause',
-            file: require('@/assets/applause.mp3'),
+            file: require('@/assets/positive/applause.mp3'),
             icon: "applause.png"
           },
           {
             hotkey: '2',
             name: 'Cheers',
-            file: require('@/assets/cheers.mp3'),
+            file: require('@/assets/positive/cheers.mp3'),
             icon: "cheers.png"
           },
           {
             hotkey: '3',
             name: 'Bell',
-            file: require('@/assets/bell.mp3'),
+            file: require('@/assets/positive/bell.mp3'),
             icon: "bell.png"
+          },
+          {
+            hotkey: '4',
+            name: 'Laugh',
+            file: require('@/assets/positive/laugh.mp3'),
+            icon: "laugh.png"
+          },
+          {
+            hotkey: '5',
+            name: 'Tiny Laugh',
+            file: require('@/assets/positive/tiny_laugh.mp3'),
+            icon: "tiny_laugh.png"
+          },
+          {
+            hotkey: '6',
+            name: 'Wow!',
+            file: require('@/assets/positive/wow.mp3')
+          },
+          {
+            hotkey: '7',
+            name: 'Yey!',
+            file: require('@/assets/positive/yey.mp3')
+          },
+          {
+            hotkey: '8',
+            name: 'Awesome!',
+            file: require('@/assets/positive/awesome.mp3')
+          },
+          {
+            hotkey: '9',
+            name: 'That\'s Right!',
+            file: require('@/assets/positive/thats_right.mp3')
+          },
+          {
+            hotkey: '0',
+            name: 'Gong',
+            file: require('@/assets/positive/Gong.mp3'),
+            icon: 'gong.png'
+          },
+          {
+            hotkey: '-',
+            name: 'Horn',
+            file: require('@/assets/positive/MLG Horns  MLG Sound Effects HD.mp3'),
+            icon: "horn.png"
+          },
+          {
+            hotkey: '=',
+            name: 'Toinks',
+            file: require('@/assets/positive/Toinks.mp3')
           }
         ],
         [
           {
             hotkey: 'Q',
             name: 'Awww',
-            file: require('@/assets/awww.mp3'),
+            file: require('@/assets/negative/awww.mp3'),
             icon: "awww.png"
           },
           {
             hotkey: 'W',
             name: 'Buzzer',
-            file: require('@/assets/buzzer.mp3'),
+            file: require('@/assets/negative/buzzer.mp3'),
             icon: "buzzer.png"
+          },
+          {
+            hotkey: 'E',
+            name: 'Crickets',
+            file: require('@/assets/negative/Crickets Awkward Silence.mp3'),
+            icon: "cricket.png"
+          },
+          {
+            hotkey: 'R',
+            name: 'Fart',
+            file: require('@/assets/negative/Fart.mp3'),
+            icon: "fart.png"
+          },
+          {
+            hotkey: 'T',
+            name: 'Mario death',
+            file: require('@/assets/negative/Mario death.mp3'),
+            icon: 'mario.png'
+          },
+          {
+            hotkey: 'Y',
+            name: 'Failure',
+            file: require('@/assets/negative/Funny sound of failure.mp3')
+          },
+          {
+            hotkey: 'U',
+            name: 'Trombone',
+            file: require('@/assets/negative/Sad Trombone.mp3')
           }
         ],
         [
           {
-            hotkey: 'a',
+            hotkey: 'A',
             name: 'Drum roll',
-            file: require('@/assets/drum_roll.mp3'),
+            file: require('@/assets/neutral/drum_roll.mp3'),
             icon: "drum_roll.png"
           },
           {
-            hotkey: 's',
+            hotkey: 'S',
+            name: 'Entrance',
+            file: require('@/assets/neutral/Drum Roll grand entrance.mp3')
+          },
+          {
+            hotkey: 'D',
             name: 'Camera',
-            file: require('@/assets/camera_shot.mp3'),
+            file: require('@/assets/neutral/camera_shot.mp3'),
             icon: "camera.png"
+          },
+          {
+            hotkey: 'F',
+            name: '10 secs',
+            file: require('@/assets/neutral/10 sec countdown.mp3'),
+            icon: 'timer.png'
+          },
+          {
+            hotkey: 'G',
+            name: 'Pressure',
+            file: require('@/assets/neutral/Clock pressure.mp3')
+          },
+          {
+            hotkey: 'H',
+            name: 'Fly away',
+            file: require('@/assets/neutral/Fly away.mp3')
+          },
+          {
+            hotkey: 'J',
+            name: 'Alert',
+            file: require('@/assets/neutral/metal gear solid.mp3'),
+            icon: 'alert.png'
+          },
+          {
+            hotkey: 'K',
+            name: 'Nature',
+            file: require('@/assets/neutral/Nature.mp3'),
+            icon: 'nature.png'
+          },
+          {
+            hotkey: 'L',
+            name: 'Punch',
+            file: require('@/assets/neutral/Punch.mp3'),
+            icon: 'punch.png'
+          },
+          {
+            hotkey: ';',
+            name: 'Round one',
+            file: require('@/assets/neutral/Round one.mp3'),
+            icon: 'one.png'
+          },
+          {
+            hotkey: '\'',
+            name: 'Round two',
+            file: require('@/assets/neutral/Round two.mp3'),
+            icon: 'two.png'
+          },
+          {
+            hotkey: ':',
+            name: 'Film Rewind',
+            file: require('@/assets/neutral/Sound film rewind.mp3'),
+            icon: 'rewind.png'
+          },
+          {
+            hotkey: '"',
+            name: 'Wheel',
+            file: require('@/assets/neutral/Spinning Wheel.mp3'),
+            icon: 'wheel.png'
+          },
+          {
+            hotkey: '_',
+            name: 'Strategy',
+            file: require('@/assets/neutral/Strategy.mp3')
           }
         ],
         [
           {
-            hotkey: 'z',
-            name: 'Laugh',
-            file: require('@/assets/laugh.mp3'),
-            icon: "laugh.png"
+            hotkey: 'Z',
+            name: 'Alam Niya',
+            file: require('@/assets/music/Alam Nya - Chorus Cut.mp3'),
+            icon: 'music.png'
           },
           {
-            hotkey: 'x',
-            name: 'Tiny Laugh',
-            file: require('@/assets/tiny_laugh.mp3'),
-            icon: "tiny_laugh.png"
+            hotkey: 'X',
+            name: 'Sigaw ng Puso',
+            file: require('@/assets/music/Sigaw ng Puso - Chorus cut.mp3'),
+            icon: 'music.png'
           },
           {
-            hotkey: 'c',
-            name: 'Wow!',
-            file: require('@/assets/wow.mp3')
+            hotkey: 'C',
+            name: 'Heavenly Music',
+            file: require('@/assets/music/Heavenly Music.mp3'),
+            icon: 'music.png'
           },
           {
-            hotkey: 'v',
-            name: 'Yey!',
-            file: require('@/assets/yey.mp3')
+            hotkey: 'V',
+            name: 'Titanic flute',
+            file: require('@/assets/music/Titanic flute.mp3'),
+            icon: 'music.png'
           },
           {
-            hotkey: 'b',
-            name: 'Awesome!',
-            file: require('@/assets/awesome.mp3')
+            hotkey: 'B',
+            name: 'Maligayang Pagbati',
+            file: require('@/assets/music/Maligayang Pagbati - 1.mp3'),
+            icon: 'music.png'
           },
           {
-            hotkey: 'n',
-            name: 'That\'s Right!',
-            file: require('@/assets/thats_right.mp3')
+            hotkey: 'N',
+            name: 'Chicken happy song',
+            file: require('@/assets/music/Chicken happy song.mp3'),
+            icon: 'music.png'
+          },
+          {
+            hotkey: 'M',
+            name: 'Spongebob',
+            file: require('@/assets/music/Spongebob.mp3'),
+            icon: 'music.png'
+          },
+          {
+            hotkey: ',',
+            name: 'Super Mario',
+            file: require('@/assets/music/Super Mario.mp3'),
+            icon: 'music.png'
           }
         ]
       ],
