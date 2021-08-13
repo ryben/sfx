@@ -293,7 +293,7 @@ export default {
             icon: 'music.png'
           },
           {
-            hotkey: ',',
+            hotkey: '.',
             name: 'KNC Song',
             file: require('@/assets/music/KNC Song.mp3'),
             icon: 'music.png'
