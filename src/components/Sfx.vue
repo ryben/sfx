@@ -291,6 +291,12 @@ export default {
             name: 'Super Mario',
             file: require('@/assets/music/Super Mario.mp3'),
             icon: 'music.png'
+          },
+          {
+            hotkey: ',',
+            name: 'KNC Song',
+            file: require('@/assets/music/KNC Song.mp3'),
+            icon: 'music.png'
           }
         ]
       ],
