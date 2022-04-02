@@ -245,6 +245,16 @@ export default {
         ],
         [
           {
+            name: 'KDR Picture tayo',
+            file: require('@/assets/neutral/KDR Papicture tayo.mp3'),
+          },
+          {
+            name: 'KDR Ready po 1 2 3',
+            file: require('@/assets/neutral/KDR-Ready-po-1-2-3.mp3'),
+          }
+        ],
+        [
+          {
             hotkey: 'Z',
             name: 'Alam Niya',
             file: require('@/assets/music/Alam Nya - Chorus Cut.mp3'),
