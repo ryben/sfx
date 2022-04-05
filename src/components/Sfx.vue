@@ -174,12 +174,6 @@ export default {
             file: require('@/assets/neutral/Drum Roll grand entrance.mp3')
           },
           {
-            hotkey: 'D',
-            name: 'Camera',
-            file: require('@/assets/neutral/camera_shot.mp3'),
-            icon: "camera.png"
-          },
-          {
             hotkey: 'F',
             name: '10 secs',
             file: require('@/assets/neutral/10 sec countdown.mp3'),
@@ -251,6 +245,12 @@ export default {
           {
             name: 'KDR Ready po 1 2 3',
             file: require('@/assets/neutral/KDR-Ready-po-1-2-3.mp3'),
+          },
+          {
+            hotkey: 'D',
+            name: 'Camera',
+            file: require('@/assets/neutral/camera_shot.mp3'),
+            icon: "camera.png"
           }
         ],
         [
