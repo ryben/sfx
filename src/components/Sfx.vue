@@ -28,12 +28,14 @@
       <br/>
       <img src="../assets/stop.png" class="effect_icon">
       <br/>
-      [space]
+      [Esc]
     </button> 
   </div>
 </template>
 
 <script>
+
+import effectGroups from "@/assets/config.json"
 
 const EFFECT_STATUS = {
   READY : 0,
@@ -41,7 +43,11 @@ const EFFECT_STATUS = {
   STOPPING : 2,
   STOPPED : 3
 }
-      
+
+const SFX_PROP = {
+  AUDIO : 'audio'
+}
+
 export default {
   name: 'HelloWorld',
   props: {
@@ -49,275 +55,17 @@ export default {
   },
   data() {
     return {
-      effect_groups: [
-        [
-          {
-            hotkey: '1',
-            name: 'Applause',
-            file: require('@/assets/positive/applause.mp3'),
-            icon: "applause.png"
-          },
-          {
-            hotkey: '2',
-            name: 'Cheers',
-            file: require('@/assets/positive/cheers.mp3'),
-            icon: "cheers.png"
-          },
-          {
-            hotkey: '3',
-            name: 'Bell',
-            file: require('@/assets/positive/bell.mp3'),
-            icon: "bell.png"
-          },
-          {
-            hotkey: '4',
-            name: 'Laugh',
-            file: require('@/assets/positive/laugh.mp3'),
-            icon: "laugh.png"
-          },
-          {
-            hotkey: '5',
-            name: 'Tiny Laugh',
-            file: require('@/assets/positive/tiny_laugh.mp3'),
-            icon: "tiny_laugh.png"
-          },
-          {
-            hotkey: '6',
-            name: 'Wow!',
-            file: require('@/assets/positive/wow.mp3')
-          },
-          {
-            hotkey: '7',
-            name: 'Yey!',
-            file: require('@/assets/positive/yey.mp3')
-          },
-          {
-            hotkey: '8',
-            name: 'Awesome!',
-            file: require('@/assets/positive/awesome.mp3')
-          },
-          {
-            hotkey: '9',
-            name: 'That\'s Right!',
-            file: require('@/assets/positive/thats_right.mp3')
-          },
-          {
-            hotkey: '0',
-            name: 'Gong',
-            file: require('@/assets/positive/Gong.mp3'),
-            icon: 'gong.png'
-          },
-          {
-            hotkey: '-',
-            name: 'Horn',
-            file: require('@/assets/positive/MLG Horns  MLG Sound Effects HD.mp3'),
-            icon: "horn.png"
-          },
-          {
-            hotkey: '=',
-            name: 'Toinks',
-            file: require('@/assets/positive/Toinks.mp3')
-          }
-        ],
-        [
-          {
-            hotkey: 'Q',
-            name: 'Awww',
-            file: require('@/assets/negative/awww.mp3'),
-            icon: "awww.png"
-          },
-          {
-            hotkey: 'W',
-            name: 'Buzzer',
-            file: require('@/assets/negative/buzzer.mp3'),
-            icon: "buzzer.png"
-          },
-          {
-            hotkey: 'E',
-            name: 'Crickets',
-            file: require('@/assets/negative/Crickets Awkward Silence.mp3'),
-            icon: "cricket.png"
-          },
-          {
-            hotkey: 'R',
-            name: 'Fart',
-            file: require('@/assets/negative/Fart.mp3'),
-            icon: "fart.png"
-          },
-          {
-            hotkey: 'T',
-            name: 'Mario death',
-            file: require('@/assets/negative/Mario death.mp3'),
-            icon: 'mario.png'
-          },
-          {
-            hotkey: 'Y',
-            name: 'Failure',
-            file: require('@/assets/negative/Funny sound of failure.mp3')
-          },
-          {
-            hotkey: 'U',
-            name: 'Trombone',
-            file: require('@/assets/negative/Sad Trombone.mp3')
-          }
-        ],
-        [
-          {
-            hotkey: 'A',
-            name: 'Drum roll',
-            file: require('@/assets/neutral/drum_roll.mp3'),
-            icon: "drum_roll.png"
-          },
-          {
-            hotkey: 'S',
-            name: 'Entrance',
-            file: require('@/assets/neutral/Drum Roll grand entrance.mp3')
-          },
-          {
-            hotkey: 'F',
-            name: '10 secs',
-            file: require('@/assets/neutral/10 sec countdown.mp3'),
-            icon: 'timer.png'
-          },
-          {
-            hotkey: 'G',
-            name: 'Pressure',
-            file: require('@/assets/neutral/Clock pressure.mp3')
-          },
-          {
-            hotkey: 'H',
-            name: 'Fly away',
-            file: require('@/assets/neutral/Fly away.mp3')
-          },
-          {
-            hotkey: 'J',
-            name: 'Alert',
-            file: require('@/assets/neutral/metal gear solid.mp3'),
-            icon: 'alert.png'
-          },
-          {
-            hotkey: 'K',
-            name: 'Nature',
-            file: require('@/assets/neutral/Nature.mp3'),
-            icon: 'nature.png'
-          },
-          {
-            hotkey: 'L',
-            name: 'Punch',
-            file: require('@/assets/neutral/Punch.mp3'),
-            icon: 'punch.png'
-          },
-          {
-            hotkey: ';',
-            name: 'Round one',
-            file: require('@/assets/neutral/Round one.mp3'),
-            icon: 'one.png'
-          },
-          {
-            hotkey: '\'',
-            name: 'Round two',
-            file: require('@/assets/neutral/Round two.mp3'),
-            icon: 'two.png'
-          },
-          {
-            hotkey: ':',
-            name: 'Film Rewind',
-            file: require('@/assets/neutral/Sound film rewind.mp3'),
-            icon: 'rewind.png'
-          },
-          {
-            hotkey: '"',
-            name: 'Wheel',
-            file: require('@/assets/neutral/Spinning Wheel.mp3'),
-            icon: 'wheel.png'
-          },
-          {
-            hotkey: '_',
-            name: 'Strategy',
-            file: require('@/assets/neutral/Strategy.mp3')
-          }
-        ],
-        [
-          {
-            name: 'KDR Picture tayo',
-            file: require('@/assets/neutral/KDR Papicture tayo.mp3'),
-          },
-          {
-            name: 'KDR Ready po 1 2 3',
-            file: require('@/assets/neutral/KDR-Ready-po-1-2-3.mp3'),
-          },
-          {
-            hotkey: 'D',
-            name: 'Camera',
-            file: require('@/assets/neutral/camera_shot.mp3'),
-            icon: "camera.png"
-          }
-        ],
-        [
-          {
-            hotkey: 'Z',
-            name: 'Alam Niya',
-            file: require('@/assets/music/Alam Nya - Chorus Cut.mp3'),
-            icon: 'music.png'
-          },
-          {
-            hotkey: 'X',
-            name: 'Sigaw ng Puso',
-            file: require('@/assets/music/Sigaw ng Puso - Chorus cut.mp3'),
-            icon: 'music.png'
-          },
-          {
-            hotkey: 'C',
-            name: 'Heavenly Music',
-            file: require('@/assets/music/Heavenly Music.mp3'),
-            icon: 'music.png'
-          },
-          {
-            hotkey: 'V',
-            name: 'Titanic flute',
-            file: require('@/assets/music/Titanic flute.mp3'),
-            icon: 'music.png'
-          },
-          {
-            hotkey: 'B',
-            name: 'Maligayang Pagbati',
-            file: require('@/assets/music/Maligayang Pagbati - 1.mp3'),
-            icon: 'music.png'
-          },
-          {
-            hotkey: 'N',
-            name: 'Chicken happy song',
-            file: require('@/assets/music/Chicken happy song.mp3'),
-            icon: 'music.png'
-          },
-          {
-            hotkey: 'M',
-            name: 'Spongebob',
-            file: require('@/assets/music/Spongebob.mp3'),
-            icon: 'music.png'
-          },
-          {
-            hotkey: ',',
-            name: 'Super Mario',
-            file: require('@/assets/music/Super Mario.mp3'),
-            icon: 'music.png'
-          },
-          {
-            hotkey: '.',
-            name: 'KNC Song',
-            file: require('@/assets/music/KNC Song.mp3'),
-            icon: 'music.png'
-          }
-        ]
-      ],
+      effect_groups: effectGroups,
       playing: [],
       volume: 40
     }
 
   },
   mounted() {
-    window.addEventListener("keypress", function(e) {
-      this.on_key_press(String.fromCharCode(e.keyCode))
+    this.load_sfx()
+
+    window.addEventListener("keydown", function(e) {
+      this.on_key_press(e)
     }.bind(this));
   },
   watch: {
@@ -330,11 +78,18 @@ export default {
     }
   },
   methods: {
+    load_sfx() {
+      let all_effects = this.effect_groups.flat()
+      for (let i=0 ; i<all_effects.length ; i++) {
+        let effect = all_effects[i]
+        effect[SFX_PROP.AUDIO] = new Audio(effect.file)
+      }
+    },
     get_img(filename) {
       if (filename) {
-        return require('../assets/' + filename)
+        return filename
       } else {
-        return require('../assets/sound.png')
+        return require('@/assets/sound.png')
       }
       
     },
@@ -342,8 +97,7 @@ export default {
       return this.volume/100
     },
     play_effect(effect) {
-      this.$refs.stop_all_button.focus()
-      var audio = new Audio(effect.file)
+      var audio = effect[SFX_PROP.AUDIO].cloneNode()
       audio.volume = this.get_volume()
       this.playing.push(audio)
       audio.play()
@@ -381,22 +135,23 @@ export default {
         await this.sleep(50)
       }
     },
-    on_key_press(char) {
+    on_key_press(e) {
+      if(e.keyCode == 27) { // Detect Escape key pressed
+          this.stop_all()
+          return
+      }
+
       let all_effects = this.effect_groups.flat()
       // Check if a shortcut matches
       for (let i=0 ; i<all_effects.length ; i++) {
         let effect = all_effects[i]
-        if (effect.hotkey.toLowerCase() === char.toLowerCase()) {
+        if (effect.hotkey && String.fromCharCode(e.keyCode) && 
+            effect.hotkey.toLowerCase() === String.fromCharCode(e.keyCode).toLowerCase()) {
           document.getElementById(effect.hotkey).click();
           return
         }
       }
 
-      switch (char) {
-        case ' ':
-          this.stop_all()
-          break
-      }
     },
     sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));

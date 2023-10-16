@@ -1,0 +1,261 @@
+[
+  [
+    {
+      "hotkey": "1",
+      "name": "Applause",
+      "file": "./sfx_files/positive/applause.mp3",
+      "icon": "./sfx_files/applause.png"
+    },
+    {
+      "hotkey": "2",
+      "name": "Cheers",
+      "file": "./sfx_files/positive/cheers.mp3",
+      "icon": "./sfx_files/cheers.png"
+    },
+    {
+      "hotkey": "3",
+      "name": "Bell",
+      "file": "./sfx_files/positive/bell.mp3",
+      "icon": "./sfx_files/bell.png"
+    },
+    {
+      "hotkey": "4",
+      "name": "Laugh",
+      "file": "./sfx_files/positive/laugh.mp3",
+      "icon": "./sfx_files/laugh.png"
+    },
+    {
+      "hotkey": "5",
+      "name": "Tiny Laugh",
+      "file": "./sfx_files/positive/tiny_laugh.mp3",
+      "icon": "./sfx_files/tiny_laugh.png"
+    },
+    {
+      "hotkey": "6",
+      "name": "Wow!",
+      "file": "./sfx_files/positive/wow.mp3"
+    },
+    {
+      "hotkey": "7",
+      "name": "Yey!",
+      "file": "./sfx_files/positive/yey.mp3"
+    },
+    {
+      "hotkey": "8",
+      "name": "Awesome!",
+      "file": "./sfx_files/positive/awesome.mp3"
+    },
+    {
+      "hotkey": "9",
+      "name": "That\"s Right!",
+      "file": "./sfx_files/positive/thats_right.mp3"
+    },
+    {
+      "hotkey": "0",
+      "name": "Gong",
+      "file": "./sfx_files/positive/Gong.mp3",
+      "icon": "./sfx_files/gong.png"
+    },
+    {
+      "hotkey": "-",
+      "name": "Horn",
+      "file": "./sfx_files/positive/MLG Horns  MLG Sound Effects HD.mp3",
+      "icon": "./sfx_files/horn.png"
+    },
+    {
+      "hotkey": "=",
+      "name": "Toinks",
+      "file": "./sfx_files/positive/Toinks.mp3"
+    }
+  ],
+  [
+    {
+      "hotkey": "Q",
+      "name": "Awww",
+      "file": "./sfx_files/negative/awww.mp3",
+      "icon": "./sfx_files/awww.png"
+    },
+    {
+      "hotkey": "W",
+      "name": "Buzzer",
+      "file": "./sfx_files/negative/buzzer.mp3",
+      "icon": "./sfx_files/buzzer.png"
+    },
+    {
+      "hotkey": "E",
+      "name": "Crickets",
+      "file": "./sfx_files/negative/Crickets Awkward Silence.mp3",
+      "icon": "./sfx_files/cricket.png"
+    },
+    {
+      "hotkey": "R",
+      "name": "Fart",
+      "file": "./sfx_files/negative/Fart.mp3",
+      "icon": "./sfx_files/fart.png"
+    },
+    {
+      "hotkey": "T",
+      "name": "Mario death",
+      "file": "./sfx_files/negative/Mario death.mp3",
+      "icon": "./sfx_files/mario.png"
+    },
+    {
+      "hotkey": "Y",
+      "name": "Failure",
+      "file": "./sfx_files/negative/Funny sound of failure.mp3"
+    },
+    {
+      "hotkey": "U",
+      "name": "Trombone",
+      "file": "./sfx_files/negative/Sad Trombone.mp3"
+    }
+  ],
+  [
+    {
+      "hotkey": "A",
+      "name": "Drum roll",
+      "file": "./sfx_files/neutral/drum_roll.mp3",
+      "icon": "./sfx_files/drum_roll.png"
+    },
+    {
+      "hotkey": "S",
+      "name": "Entrance",
+      "file": "./sfx_files/neutral/Drum Roll grand entrance.mp3"
+    },
+    {
+      "hotkey": "F",
+      "name": "10 secs",
+      "file": "./sfx_files/neutral/10 sec countdown.mp3",
+      "icon": "./sfx_files/timer.png"
+    },
+    {
+      "hotkey": "G",
+      "name": "Pressure",
+      "file": "./sfx_files/neutral/Clock pressure.mp3"
+    },
+    {
+      "hotkey": "H",
+      "name": "Fly away",
+      "file": "./sfx_files/neutral/Fly away.mp3"
+    },
+    {
+      "hotkey": "J",
+      "name": "Alert",
+      "file": "./sfx_files/neutral/metal gear solid.mp3",
+      "icon": "./sfx_files/alert.png"
+    },
+    {
+      "hotkey": "K",
+      "name": "Nature",
+      "file": "./sfx_files/neutral/Nature.mp3",
+      "icon": "./sfx_files/nature.png"
+    },
+    {
+      "hotkey": "L",
+      "name": "Punch",
+      "file": "./sfx_files/neutral/Punch.mp3",
+      "icon": "./sfx_files/punch.png"
+    },
+    {
+      "hotkey": ";",
+      "name": "Round one",
+      "file": "./sfx_files/neutral/Round one.mp3",
+      "icon": "./sfx_files/one.png"
+    },
+    {
+      "hotkey": "\"",
+      "name": "Round two",
+      "file": "./sfx_files/neutral/Round two.mp3",
+      "icon": "./sfx_files/two.png"
+    },
+    {
+      "hotkey": ":",
+      "name": "Film Rewind",
+      "file": "./sfx_files/neutral/Sound film rewind.mp3",
+      "icon": "./sfx_files/rewind.png"
+    },
+    {
+      "hotkey": "",
+      "name": "Wheel",
+      "file": "./sfx_files/neutral/Spinning Wheel.mp3",
+      "icon": "./sfx_files/wheel.png"
+    },
+    {
+      "hotkey": "_",
+      "name": "Strategy",
+      "file": "./sfx_files/neutral/Strategy.mp3"
+    }
+  ],
+  [
+    {
+      "name": "KDR Picture tayo",
+      "file": "./sfx_files/neutral/KDR Papicture tayo.mp3"
+    },
+    {
+      "name": "KDR Ready po 1 2 3",
+      "file": "./sfx_files/neutral/KDR-Ready-po-1-2-3.mp3"
+    },
+    {
+      "hotkey": "D",
+      "name": "Camera",
+      "file": "./sfx_files/neutral/camera_shot.mp3",
+      "icon": "./sfx_files/camera.png"
+    }
+  ],
+  [
+    {
+      "hotkey": "Z",
+      "name": "Alam Niya",
+      "file": "./sfx_files/music/Alam Nya - Chorus Cut.mp3",
+      "icon": "./sfx_files/music.png"
+    },
+    {
+      "hotkey": "X",
+      "name": "Sigaw ng Puso",
+      "file": "./sfx_files/music/Sigaw ng Puso - Chorus cut.mp3",
+      "icon": "./sfx_files/music.png"
+    },
+    {
+      "hotkey": "C",
+      "name": "Heavenly Music",
+      "file": "./sfx_files/music/Heavenly Music.mp3",
+      "icon": "./sfx_files/music.png"
+    },
+    {
+      "hotkey": "V",
+      "name": "Titanic flute",
+      "file": "./sfx_files/music/Titanic flute.mp3",
+      "icon": "./sfx_files/music.png"
+    },
+    {
+      "hotkey": "B",
+      "name": "Maligayang Pagbati",
+      "file": "./sfx_files/music/Maligayang Pagbati - 1.mp3",
+      "icon": "./sfx_files/music.png"
+    },
+    {
+      "hotkey": "N",
+      "name": "Chicken happy song",
+      "file": "./sfx_files/music/Chicken happy song.mp3",
+      "icon": "./sfx_files/music.png"
+    },
+    {
+      "hotkey": "M",
+      "name": "Spongebob",
+      "file": "./sfx_files/music/Spongebob.mp3",
+      "icon": "./sfx_files/music.png"
+    },
+    {
+      "hotkey": ",",
+      "name": "Super Mario",
+      "file": "./sfx_files/music/Super Mario.mp3",
+      "icon": "./sfx_files/music.png"
+    },
+    {
+      "hotkey": ".",
+      "name": "KNC Song",
+      "file": "./sfx_files/music/KNC Song.mp3",
+      "icon": "./sfx_files/music.png"
+    }
+  ]
+]
