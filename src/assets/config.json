@@ -57,13 +57,11 @@
       "icon": "./sfx_files/gong.png"
     },
     {
-      "hotkey": "-",
       "name": "Horn",
       "url": "./sfx_files/positive/MLG Horns  MLG Sound Effects HD.mp3",
       "icon": "./sfx_files/horn.png"
     },
     {
-      "hotkey": "=",
       "name": "Toinks",
       "url": "./sfx_files/positive/Toinks.mp3"
     }
@@ -157,19 +155,16 @@
       "icon": "./sfx_files/punch.png"
     },
     {
-      "hotkey": ";",
       "name": "Round one",
       "url": "./sfx_files/neutral/Round one.mp3",
       "icon": "./sfx_files/one.png"
     },
     {
-      "hotkey": "\"",
       "name": "Round two",
       "url": "./sfx_files/neutral/Round two.mp3",
       "icon": "./sfx_files/two.png"
     },
     {
-      "hotkey": ":",
       "name": "Film Rewind",
       "url": "./sfx_files/neutral/Sound film rewind.mp3",
       "icon": "./sfx_files/rewind.png"
@@ -181,7 +176,6 @@
       "icon": "./sfx_files/wheel.png"
     },
     {
-      "hotkey": "_",
       "name": "Strategy",
       "url": "./sfx_files/neutral/Strategy.mp3"
     }
