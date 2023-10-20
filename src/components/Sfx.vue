@@ -267,7 +267,7 @@ export default {
       // prepare audio
       let sfx_new = {}
       sfx_new[SFX_PROP.NAME] = inp.name
-      sfx_new[SFX_PROP.URL] = inp.url // TODO: Detect if Google Drive share link, auto transform to a download link
+      sfx_new[SFX_PROP.URL] = this.convert_gdrive_link_to_direct(inp.url)
       // TODO: Error handling if URL provided is invalid
 
       this.preload_effect(sfx_new)
@@ -322,6 +322,19 @@ export default {
     },
     show_config_dropdown() {
       document.getElementById("config_dropdown").classList.toggle("show");
+    },
+    convert_gdrive_link_to_direct(link) {
+      let gdriveRegexLink =
+        ".*drive\\.google\\.com\\/file\\/d\\/" // GDrive share link start
+        + "(.*)" // book
+        + "\\/.*" // everything else after
+
+
+      let matchGroups = link.match(gdriveRegexLink)
+      if (matchGroups) {
+        return 'https://drive.google.com/uc?id=' + matchGroups[1]
+      }
+      return link
     },
     save_config_to_local_storage() {
       localStorage.setItem(LOCAL_STORAGE.CONFIG, this.added_sfx_config)
