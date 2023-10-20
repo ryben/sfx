@@ -4,37 +4,51 @@
     <head>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     </head>
+
     <div id="sfx_table" tabindex="0">
+      <span id="menu_dropdown" class="dropdown">
+        <button @click="myFunction()" class="dropbtn">
+          ☰
+        </button>
+        <div id="myDropdown" class="dropdown-content">
+          <a @click="show_modal('modal_add_sfx')">Add SFX</a>
+          <label for="upload_config" style="cursor: pointer;">
+            <a>
+              Import Config
+            </a>
+          </label>
+          <a @click="download()">Download current config</a>
+        </div>
+        <input id="upload_config" type="file" @change="upload" class="invisible" /><br />
+      </span>
+
       <button @click="stop_all" class="stop_all_button">
         Stop all
-        <br />
+        <br>
         <img src="../assets/stop.png" class="effect_icon">
-        <br />
+        <br>
         [Esc]
-      </button>
-      <br />
-      <br />
+      </button><br><br>
+
       <div class="slidecontainer" style="height: 100;">
         <i class="material-icons">volume_up</i>
         <input type="range" min="1" max="100" v-model="volume" class="slider" id="myRange"
           style="height: 23px; width: 150px;">
       </div>
-      <br>
-      <button @click="show_modal()">+ Add SFX</button>
-      <button @click="download()">Download configuration</button>
-      <input type="file" @change="upload" /><br />
 
-      <div>
+      <div id="div_added_sfx" v-if="added_sfx.length > 0">
+        <br><br>
         <button v-for="e in added_sfx" :key="e.hotkey" @click="play_effect(e)"
           @contextmenu="on_effect_right_click($event)" class="effect">
           {{ e.name }}
-          <br />
-          <img :src="get_img(e.icon)" class="effect_icon">
-          <br />
+          <br>
+          <br>
+          <img :src="get_img(e.icon)" class="effect_icon_small">
+          <br>
           {{ e.hotkey }}
         </button>
-        <br><br><br>
-      </div>
+      </div><br><br>
+
       <div v-for="group in effect_groups" :key="group.no">
         <button v-for="e in group" :key="e.hotkey" @click="play_effect(e)" class="effect">
           {{ e.name }}
@@ -44,10 +58,8 @@
           {{ e.hotkey }}
         </button>
       </div>
-    </div>
-    <br />
-    <br />
-    <br>
+    </div><br><br><br>
+
     <modal name="modal_add_sfx" :height="470" :width="450" :adaptive="true">
       <div>
         <h3>
@@ -65,6 +77,7 @@
         <br>
       </div>
     </modal>
+
   </div>
 </template>
 
@@ -96,7 +109,7 @@ export default {
       effect_groups: effectGroups,
       added_sfx: [],
       sfx_to_add: {
-        name: "New SFX",
+        name: "",
         url: "https://drive.google.com/uc?id=1WIdryvQHAP7h34SaIWeDV8rVQ9sypqQF"
       },
       playing: [],
@@ -124,6 +137,19 @@ export default {
     document.getElementById("sfx_table").addEventListener("keydown", function (e) {
       this.on_key_press(e)
     }.bind(this));
+
+    window.onclick = function (event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
   },
   watch: {
     volume: function () {
@@ -161,18 +187,19 @@ export default {
       audio.volume = this.get_volume()
 
       // make sure audio is reset before playing
-      if (!audio.ended) {
-        audio.pause()
-        audio.currentTime = 0
-        audio[SFX_PROP.STATUS] = EFFECT_STATUS.READY
-      }
+      audio.pause()
+      audio.currentTime = 0
+      audio[SFX_PROP.STATUS] = EFFECT_STATUS.READY
 
       this.playing.push(audio)
-
       audio.play()
     },
-    show_modal() {
-      this.$modal.show('modal_add_sfx');
+    show_modal(modal_name) {
+      this.$modal.show(modal_name)
+
+      if (modal_name == 'modal_add_sfx') {
+        this.sfx_to_add.name = "SFX " + (this.added_sfx.length + 1)
+      }
     },
     async stop_all() {
       let all_playing = this.playing
@@ -251,11 +278,13 @@ export default {
       pom.click();
     },
     upload(event) {
-      let reader = new FileReader()
-      reader.onload = (e) => {
-        this.load_sfx_from_config(e.target.result)
+      if (event.target.files.length !== 0) {
+        let reader = new FileReader()
+        reader.onload = (e) => {
+          this.load_sfx_from_config(e.target.result)
+        }
+        reader.readAsText(event.target.files[0])
       }
-      reader.readAsText(event.target.files[0])
     },
     load_sfx_from_config(json) {
       // perform json validation first
@@ -277,6 +306,9 @@ export default {
         return false;
       }
       return true;
+    },
+    myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
     },
     sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -340,6 +372,21 @@ a {
   width: 50px;
 }
 
+.effect_icon_small {
+  height: 25px;
+  width: 25px;
+}
+
+.add_effect_button {}
+
+.download_button {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
 img {
   pointer-events: none;
 }
@@ -350,7 +397,6 @@ img {
   padding: 50px;
   margin-left: 50px;
   margin-right: 50px;
-  border-radius: 20px;
   border: 1px solid rgb(210, 210, 210);
 }
 
@@ -359,38 +405,61 @@ img {
   background-color: whitesmoke;
 }
 
-
-nav {
-  width: fit-content;
-  border: 1px solid #666;
-  border-radius: 4px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-}
-
-nav input {
-  display: none;
-}
-
-nav label {
-  font-family: sans-serif;
-  padding: 10px 16px;
-  border-right: 1px solid #ccc;
+.dropbtn {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 14px;
+  font-size: 30px;
+  border: none;
   cursor: pointer;
-  transition: all 0.3s;
 }
 
-nav label:last-of-type {
-  border-right: 0;
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #a5a5a5;
 }
 
-nav label:hover {
-  background: #eee;
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-nav input:checked+label {
-  background: #becbff;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 230px;
+  overflow: auto;
+  text-align: left;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+.invisible {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+#menu_dropdown {
+  float: left;
+  margin-top: -50px;
+  margin-left: -50px;
 }
 </style>
