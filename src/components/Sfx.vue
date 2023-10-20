@@ -63,7 +63,8 @@
     </div><br><br><br>
 
     <modal name="modal_add_sfx" :height="470" :width="450" :adaptive="true">
-      <div>
+      <i class="material-icons x-button" @click="hide_add_sfx_modal()">close</i><br>
+      <div style="margin-top: -15px;">
         <h3>
           <p>Add SFX</p>
         </h3>
@@ -208,6 +209,9 @@ export default {
     show_add_sfx_modal() {
       this.sfx_to_add.name = "SFX " + (this.added_sfx.length + 1)
       this.$modal.show('modal_add_sfx')
+    },
+    hide_add_sfx_modal() {
+      this.$modal.hide('modal_add_sfx')
     },
     async stop_all() {
       let all_playing = this.playing
@@ -496,5 +500,11 @@ img {
   float: left;
   margin-top: -50px;
   margin-left: -50px;
+}
+
+.x-button {
+  padding: 10px;
+  cursor: pointer;
+  float: right;
 }
 </style>
