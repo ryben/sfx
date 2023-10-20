@@ -7,17 +7,18 @@
 
     <div id="sfx_table" tabindex="0">
       <span id="menu_dropdown" class="dropdown">
-        <button @click="myFunction()" class="dropbtn">
+        <button @click="show_config_dropdown()" class="dropbtn">
           ☰
         </button>
-        <div id="myDropdown" class="dropdown-content">
-          <a @click="show_modal('modal_add_sfx')">Add SFX</a>
+        <div id="config_dropdown" class="dropdown-content">
+          <a @click="show_add_sfx_modal()">Add SFX</a>
           <label for="upload_config" style="cursor: pointer;">
             <a>
               Import Config
             </a>
           </label>
           <a @click="download()">Download current config</a>
+          <a @click="clear()">Clear added effects</a>
         </div>
         <input id="upload_config" type="file" @change="upload" class="invisible" /><br />
       </span>
@@ -39,7 +40,7 @@
       <div id="div_added_sfx" v-if="added_sfx.length > 0">
         <br><br>
         <button v-for="e in added_sfx" :key="e.hotkey" @click="play_effect(e)"
-          @contextmenu="on_effect_right_click($event)" class="effect">
+          @contextmenu="on_effect_right_click(e, $event)" class="effect">
           {{ e.name }}
           <br>
           <br>
@@ -50,7 +51,8 @@
       </div><br><br>
 
       <div v-for="group in effect_groups" :key="group.no">
-        <button v-for="e in group" :key="e.hotkey" @click="play_effect(e)" class="effect">
+        <button v-for="e in group" :key="e.hotkey" @click="play_effect(e)" class="effect"
+          @contextmenu="$event.preventDefault()">
           {{ e.name }}
           <br />
           <img :src="get_img(e.icon)" class="effect_icon">
@@ -99,6 +101,10 @@ const SFX_PROP = {
   STATUS: 'status'
 }
 
+const LOCAL_STORAGE = {
+  CONFIG: 'config'
+}
+
 export default {
   name: 'HelloWorld',
   props: {
@@ -132,6 +138,8 @@ export default {
     }
   },
   mounted() {
+    this.load_from_local_storage()
+
     this.load_sfx()
 
     document.getElementById("sfx_table").addEventListener("keydown", function (e) {
@@ -158,6 +166,9 @@ export default {
           p.volume = this.get_volume()
         }
       })
+    },
+    added_sfx: function () {
+      this.save_config_to_local_storage()
     }
   },
   methods: {
@@ -194,12 +205,9 @@ export default {
       this.playing.push(audio)
       audio.play()
     },
-    show_modal(modal_name) {
-      this.$modal.show(modal_name)
-
-      if (modal_name == 'modal_add_sfx') {
-        this.sfx_to_add.name = "SFX " + (this.added_sfx.length + 1)
-      }
+    show_add_sfx_modal() {
+      this.sfx_to_add.name = "SFX " + (this.added_sfx.length + 1)
+      this.$modal.show('modal_add_sfx')
     },
     async stop_all() {
       let all_playing = this.playing
@@ -234,8 +242,8 @@ export default {
         await this.sleep(50)
       }
     },
-    on_effect_right_click(e) {
-      e.preventDefault();
+    on_effect_right_click(effect, event) {
+      event.preventDefault();
     },
     on_key_press(e) {
       if (e.keyCode == 27) { // Detect Escape key pressed
@@ -299,6 +307,11 @@ export default {
         this.added_sfx.concat(this.add_sfx(sfx))
       })
     },
+    clear() {
+      if (confirm("Are you sure you want to clear all added SFX?") == true) {
+        this.added_sfx = []
+      }
+    },
     is_valid_json(str) {
       try {
         JSON.parse(str);
@@ -307,8 +320,14 @@ export default {
       }
       return true;
     },
-    myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
+    show_config_dropdown() {
+      document.getElementById("config_dropdown").classList.toggle("show");
+    },
+    save_config_to_local_storage() {
+      localStorage.setItem(LOCAL_STORAGE.CONFIG, this.added_sfx_config)
+    },
+    load_from_local_storage() {
+      this.load_sfx_from_config(localStorage.getItem(LOCAL_STORAGE.CONFIG))
     },
     sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -344,7 +363,7 @@ a {
 
 .stop_all_button {
   height: 100px;
-  width: 200px;
+  width: 300px;
 }
 
 .ui_button_medium {
