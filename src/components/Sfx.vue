@@ -116,7 +116,7 @@ export default {
       added_sfx: [],
       sfx_to_add: {
         name: "",
-        url: "https://drive.google.com/uc?id=1WIdryvQHAP7h34SaIWeDV8rVQ9sypqQF"
+        url: ""
       },
       playing: [],
       volume: 40
@@ -303,9 +303,12 @@ export default {
 
       // TODO: Perform validation of sfx format
       this.added_sfx = []
-      JSON.parse(json).flat().forEach(sfx => {
-        this.added_sfx.concat(this.add_sfx(sfx))
-      })
+      let config = JSON.parse(json)
+      if (config) {
+        config.flat().forEach(sfx => {
+          this.added_sfx.concat(this.add_sfx(sfx))
+        })
+      }
     },
     clear() {
       if (confirm("Are you sure you want to clear all added SFX?") == true) {
